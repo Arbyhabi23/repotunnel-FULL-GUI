@@ -54,6 +54,9 @@ class MainActivity : Activity() {
     private lateinit var tvDown: TextView
     private lateinit var tvUp: TextView
     private lateinit var tvError: TextView
+    private lateinit var settingsBody: View
+    private lateinit var tvSettingsHeader: TextView
+    private var expanded = false
     private lateinit var crashFile: File
 
     private lateinit var btnBg: GradientDrawable
@@ -96,12 +99,18 @@ class MainActivity : Activity() {
         tvDown = findViewById(R.id.tvDown)
         tvUp = findViewById(R.id.tvUp)
         tvError = findViewById(R.id.tvError)
+        settingsBody = findViewById(R.id.settingsBody)
+        tvSettingsHeader = findViewById(R.id.tvSettingsHeader)
 
         val p = getSharedPreferences("cfg", MODE_PRIVATE)
         etHost.setText(p.getString("host", ""))
         etPort.setText(p.getString("port", ""))
         etUser.setText(p.getString("user", ""))
         etPass.setText(p.getString("pass", ""))
+
+        // pengaturan tersembunyi kalau sudah pernah diisi; tap judul untuk buka/tutup
+        setExpanded((p.getString("host", "") ?: "").isBlank())
+        tvSettingsHeader.setOnClickListener { setExpanded(!expanded) }
 
         btnBg = GradientDrawable().apply {
             shape = GradientDrawable.OVAL
@@ -162,6 +171,7 @@ class MainActivity : Activity() {
             return
         }
         if (etHost.text.toString().isBlank()) {
+            setExpanded(true)
             ObjectAnimator.ofFloat(etHost, "translationX", 0f, -24f, 24f, -16f, 16f, -8f, 8f, 0f)
                 .setDuration(450).start()
             etHost.requestFocus()
@@ -215,6 +225,7 @@ class MainActivity : Activity() {
         state = s
         handler.removeCallbacks(ticker)
 
+        if (s != OFF) setExpanded(false)
         val editable = s == OFF
         listOf(etHost, etPort, etUser, etPass).forEach {
             it.isEnabled = editable
@@ -241,11 +252,17 @@ class MainActivity : Activity() {
                 stopSpin(); startPulse()
                 animateColor(C_ON)
                 tvStatus.text = "Terhubung"
-                tvSub.text = "Lewat ${etHost.text.toString().trim()}"
+                tvSub.text = "Trafik lewat server proxy"
                 lastTx = 0L; lastRx = 0L; lastT = 0L
                 handler.post(ticker)
             }
         }
+    }
+
+    private fun setExpanded(open: Boolean) {
+        expanded = open
+        settingsBody.visibility = if (open) View.VISIBLE else View.GONE
+        tvSettingsHeader.text = if (open) "PENGATURAN PROXY  ▴" else "PENGATURAN PROXY  ▾"
     }
 
     private fun animateColor(to: Int) {
