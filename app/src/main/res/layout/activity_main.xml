@@ -133,41 +133,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
+            android:animateLayoutChanges="true"
             android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvSettingsHeader"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
                 android:letterSpacing="0.1"
-                android:text="PENGATURAN PROXY"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="PENGATURAN PROXY  ▾"
                 android:textColor="#8FA3BF"
-                android:textSize="11sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etHost"
-                style="@style/Field"
-                android:hint="Host / IP VPS"
-                android:inputType="textUri" />
+            <LinearLayout
+                android:id="@+id/settingsBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-            <EditText
-                android:id="@+id/etPort"
-                style="@style/Field"
-                android:hint="Port HTTP proxy"
-                android:inputType="number" />
+                <EditText
+                    android:id="@+id/etHost"
+                    style="@style/Field"
+                    android:hint="Host / IP VPS"
+                    android:inputType="textUri" />
 
-            <EditText
-                android:id="@+id/etUser"
-                style="@style/Field"
-                android:hint="Username (opsional)"
-                android:inputType="text" />
+                <EditText
+                    android:id="@+id/etPort"
+                    style="@style/Field"
+                    android:hint="Port HTTP proxy"
+                    android:inputType="number" />
 
-            <EditText
-                android:id="@+id/etPass"
-                style="@style/Field"
-                android:hint="Password (opsional)"
-                android:inputType="textPassword" />
+                <EditText
+                    android:id="@+id/etUser"
+                    style="@style/Field"
+                    android:hint="Username (opsional)"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/etPass"
+                    style="@style/Field"
+                    android:hint="Password (opsional)"
+                    android:inputType="textPassword" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
