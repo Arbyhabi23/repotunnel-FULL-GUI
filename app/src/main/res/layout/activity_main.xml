@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:letterSpacing="0.08"
-            android:text="SIMPLE TUNNEL"
+            android:text="SIMPLE TUNNEL by Master"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="HTTP tunnel • tanpa iklan • ringan"
+            android:text="Terowongan Rahasia • tanpa iklan • ringan"
             android:textColor="#8FA3BF"
             android:textSize="12sp" />
 
