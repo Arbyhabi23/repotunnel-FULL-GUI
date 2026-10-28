@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:letterSpacing="0.08"
+            android:text="SIMPLE TUNNEL"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="HTTP tunnel • tanpa iklan • ringan"
+            android:textColor="#8FA3BF"
+            android:textSize="12sp" />
+
+        <FrameLayout
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="24dp">
+
+            <View
+                android:id="@+id/ring1"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:background="@drawable/ring_pulse" />
+
+            <View
+                android:id="@+id/ring2"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:background="@drawable/ring_pulse" />
+
+            <View
+                android:id="@+id/spinner"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ring_spinner"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/powerBtn"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:contentDescription="Tombol sambung"
+                android:focusable="true"
+                android:padding="46dp"
+                android:src="@drawable/ic_power" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Terputus"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Ketuk tombol untuk menyambung"
+            android:textColor="#8FA3BF"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="monospace"
+            android:text="00:00:00"
+            android:textColor="#C9D6EA"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="↓ 0 B/s\n0 B"
+                android:textColor="#00E5C3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvUp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="↑ 0 B/s\n0 B"
+                android:textColor="#FFB020"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="PENGATURAN PROXY"
+                android:textColor="#8FA3BF"
+                android:textSize="11sp" />
+
+            <EditText
+                android:id="@+id/etHost"
+                style="@style/Field"
+                android:hint="Host / IP VPS"
+                android:inputType="textUri" />
+
+            <EditText
+                android:id="@+id/etPort"
+                style="@style/Field"
+                android:hint="Port HTTP proxy"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etUser"
+                style="@style/Field"
+                android:hint="Username (opsional)"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etPass"
+                style="@style/Field"
+                android:hint="Password (opsional)"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#FF6B6B"
+            android:textIsSelectable="true"
+            android:textSize="11sp" />
+    </LinearLayout>
+</ScrollView>
